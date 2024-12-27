@@ -1,0 +1,28 @@
+﻿@model List<StudentManagementApp.Models.Student>
+
+<h1>Student List</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Course</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Name</td>
+                <td>@student.Age</td>
+                <td>@student.Course</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = student.Id }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = student.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("Create", "Student")" class="btn btn-primary">Add New Student</a>
